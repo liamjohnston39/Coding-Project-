@@ -9,19 +9,14 @@
 
         <script>
             var canvas, canvasContext;
-
             window.onload = function() {
                 canvas = document.getElementById('gameCanvas');
                 canvasContext = canvas.getContext('2d');
                 
                 document.addEventListener('keydown', keyPressed);
                 document.addEventListener('keyup', keyReleased); 
-
-
                 setInterval(mainloop, 1000 / 50);
-
             }
-
             var playerXpos = 0;
             var playerypos = 0;
             var playexspeed = 10;
@@ -32,41 +27,38 @@
             var RightArrowPressed = false;
             var upArrowPressed = false;
             var downArrowPressed = false;
-
             const LEFT_KEY = 37;
             const UP_KEY = 38;
             const RIGHT_KEY = 39;
             const DOWN_KEY = 40;
             
-
             function mainloop() { // loop runs code 50 times per second 
                 colorRect(0, 0, canvas.width, canvas.height, 'black'); //bg
                 colorRect(playerXpos, playerypos, PLAYER_SIZE, PLAYER_SIZE, 'red'); //bg
-
                playermove();
-
-
             }
-
-
             function playermove() {
                 
                 if(RightArrowPressed){
                     playerXpos += playexspeed;
-              
                 }
-
-                //if(playerXpos > canvas.width - PLAYER_SIZE )
-                // {
-                //    playexspeed = playexspeed * -1;
-                // }
+                 if(leftArrowPressed){
+                    playerXpos -= playexspeed;
+                }
+                if(upArrowPressed){
+                    playerypos -= playeryspeed;
+                }
+                if(downArrowPressed){
+                    playerypos += playeryspeed;
+                }
+                
+                
+            
+                
+               
             }
-
-
             function keyPressed(evt) {
-
                 console.log(evt.keyCode) 
-
                 if (evt.keyCode == LEFT_KEY) {  
                     leftArrowPressed = true;  
                 }
@@ -78,11 +70,10 @@
                 }
                 if (evt.keyCode == DOWN_KEY) { 
                     downArrowPressed = true; 
-
+            }
             }
             
             function keyReleased(evt) {
-
                 if (evt.keyCode == LEFT_KEY) {  
                     leftArrowPressed = false; 
                 }
@@ -95,20 +86,11 @@
                 if (evt.keyCode == DOWN_KEY) {    
                     downArrowPressed = false;  
                 }
-
             }
-
-
-
-
-
-
             // func to draw colored rects on canvas
             function colorRect(x, y, w, h, c) {
                 canvasContext.fillStyle = c;
                 canvasContext.fillRect(x, y, w, h);
-
             }
-
         </script>
     </body>
