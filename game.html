@@ -39,20 +39,19 @@
             }
             function playermove() {
                 
-                if(RightArrowPressed){
-                    playerXpos += playexspeed;
+                if(RightArrowPressed  && playerXpos + PLAYER_SIZE < canvas.width){
+                    playerXpos += playexspeed; 
                 }
-                 if(leftArrowPressed){
+                 if(leftArrowPressed && playerXpos > 0){
                     playerXpos -= playexspeed;
                 }
-                if(upArrowPressed){
+                if(upArrowPressed && playerypos > 0){
                     playerypos -= playeryspeed;
                 }
-                if(downArrowPressed){
+                if(downArrowPressed && playerypos + PLAYER_SIZE < canvas.height){
                     playerypos += playeryspeed;
                 }
-                
-                
+               
             
                 
                
