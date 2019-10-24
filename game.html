@@ -20,8 +20,14 @@
             var playerXpos = 0;
             var playerypos = 0;
             var playexspeed = 10;
-            var playeryspeed = 10;
+            var playeryspeed = 6;
             const PLAYER_SIZE = 20;
+            
+            var BlockXpos = 0;
+            var BlockYpos = 0;
+            var BlockXspeed = 10;
+            var BlockYspeed = 6;
+            const BlockSize = 20;
             
             var leftArrowPressed = false;
             var RightArrowPressed = false;
@@ -34,9 +40,13 @@
             
             function mainloop() { // loop runs code 50 times per second 
                 colorRect(0, 0, canvas.width, canvas.height, 'black'); //bg
-                colorRect(playerXpos, playerypos, PLAYER_SIZE, PLAYER_SIZE, 'red'); //bg
+                colorRect(playerXpos, playerypos, PLAYER_SIZE, PLAYER_SIZE, 'red');
+                colorRect(BlockXpos, BlockYpos, BlockSize, BlockSize, 'blue');//bg
                playermove();
+                blockMove();
             }
+            
+            
             function playermove() {
                 
                 if(RightArrowPressed  && playerXpos + PLAYER_SIZE < canvas.width){
@@ -51,11 +61,16 @@
                 if(downArrowPressed && playerypos + PLAYER_SIZE < canvas.height){
                     playerypos += playeryspeed;
                 }
-               
-            
-                
-               
+
             }
+            
+            function blockMove(){
+                BlockYpos += BlockYspeed;
+                
+                
+            }
+            
+            
             function keyPressed(evt) {
                 console.log(evt.keyCode) 
                 if (evt.keyCode == LEFT_KEY) {  
