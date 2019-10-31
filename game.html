@@ -37,6 +37,7 @@
             const UP_KEY = 38;
             const RIGHT_KEY = 39;
             const DOWN_KEY = 40;
+            var Score = 1
 
             function mainloop() { // loop runs code 50 times per second 
                 colorRect(0, 0, canvas.width, canvas.height, 'black'); //bg
@@ -61,7 +62,11 @@
                 if (downArrowPressed && playerypos + PLAYER_SIZE < canvas.height) {
                     playerypos += playeryspeed;
                 }
-
+         
+                if(BlockXpos + BlockSize > playerXpos && BlockXpos < playerXpos + PLAYER_SIZE && BlockYpos + BlockSize > playerypos && BlockYpos < playerypos + PLAYER_SIZE){
+                   playerXpos = 0;
+                }
+             
             }
 
             function getRandomInt(max) {
@@ -74,7 +79,8 @@
 
                 if (BlockYpos > canvas.height) {
                     BlockYpos = 0
-                    BlockXpos =(getRandomInt(400));
+                    BlockXpos = (getRandomInt(400));
+                    Score = Score + 1
                 }
 
             }
